@@ -165,3 +165,96 @@ def some-value "a-value" ; `def` binds the string `"a-value"` to the name `some-
 ```
 
 ## Functions
+
+### Calling Functions
+
+```clojure
+(function-name parameter1 parameter2 ... parameterN)
+```
+
+### Defining Functions
+
+```clojure
+(defn function-name
+    "a string that describes the function"
+    [parameters]
+    function-body)
+```
+
+#### Parameters and arity
+
+```clojure
+(defn multi-arity
+  ([first-arg second-arg]
+     (do-things first-arg second-arg))
+  ([first-arg]
+     (do-things first-arg)))
+
+(defn favorite-things
+  [name & things] ; rest parameter puts all other arguments in a list
+  (str "Hi, " name ", here are my favorite things: "
+       (clojure.string/join ", " things)))
+```
+
+#### Destructuring
+
+```clojure
+(defn destructuring-a-vector-or-a-list
+  [[first-element second-element & all-other-elements]]
+  function-body)
+
+(defn destructuring-a-map
+➊   [{some-map-value :some-map-key another-map-value :another-map-key}]
+  function-body)
+
+(defn another-way-to-destructure-a-map
+  [{:keys [some-key-name another-key-name]}] ; the symbol `some-key-name` is associated with the value from the key `:some-key-name`
+  function-body)
+
+(defn another-way-to-destructure-a-map
+  [{:keys [some-key-name]} :as map-name] ; `:as` is used to retain access to the map
+  function-body)
+```
+
+#### Function Body
+
+* Can contain forms of any kind
+* Returns the last form evaluated
+
+### Anonymous Functions
+
+```clojure
+(fn [param-list]
+  function-body)
+
+#(function-body)
+```
+
+* in the `#` form parameters are accessed with the `%` symbol
+    * if `%` is not present at the function body the function is created with arity 0
+    * if `%` is present at the function body the function has arity 1
+    * to access multiple arguments use `%1`, `%2`, `%3` and so on
+        * `%` and `%1` are equivalent
+        * `%&` is used to represent a rest parameter
+        
+### Returning Functions
+
+```clojure
+(defn inc-maker
+  "Create a custom incrementor"
+  [inc-by]
+  #(+ % inc-by))
+
+(def inc3 (inc-maker 3))
+
+(inc3 7)
+; => 10
+```
+
+## Putting It All Together
+
+### Let
+
+### Loop
+
+### Regular Expressions
