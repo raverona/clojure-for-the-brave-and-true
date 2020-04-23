@@ -4,7 +4,7 @@
             [clojure.test.check.properties :as prop]
             [clojure.test.check.clojure-test :refer [defspec]]))
 
-(defspec testing-experiment
+(defspec testing-add100
          100
          (prop/for-all [number gen/large-integer]
                        (= (+ number 100)
