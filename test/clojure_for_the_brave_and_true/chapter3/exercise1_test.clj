@@ -1,6 +1,5 @@
-(ns clojure-for-the-brave-and-true.chapter3.exercise1
-  (:require [clojure.test :refer :all]
-            [clojure-for-the-brave-and-true.core :refer :all]))
+(ns clojure-for-the-brave-and-true.chapter3.exercise1-test
+  (:require [clojure.test :refer :all]))
 
 (deftest testing-built-in-functions
   (testing "the str function"
