@@ -16,6 +16,10 @@ FIXME: explanation
 
 FIXME: ...
 
+## Testing
+
+Execute the `lein test` command at the root folder of the project to run all tests
+
 ## License
 
 Copyright © 2020
