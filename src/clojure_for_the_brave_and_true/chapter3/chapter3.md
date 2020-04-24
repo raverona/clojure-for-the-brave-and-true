@@ -255,6 +255,25 @@ def some-value "a-value" ; `def` binds the string `"a-value"` to the name `some-
 
 ### Let
 
+```clojure
+(let [name value])
+```
+
+* binds names to values
+* creates a new scope
+
 ### Loop
 
+```clojure
+(loop [symbol-name initial-value]
+  do-something
+  (recur next-iteration-value-for-symbol-name))
+```
+
 ### Regular Expressions
+
+```clojure
+#"regular-expression"
+```
+
+* the `re-find` function tests is a string matches a pattern
