@@ -55,3 +55,58 @@ not in terms of specific data structures
 * If more than a `seq` is provided the function has to accept a number of parameters equal to the number of `seq` provided and it will apply to each element of them until one ends, put the result in a list and ignore the rest of the elements
 
 ### reduce
+
+```clojure
+(reduce function val seq) 
+```
+
+* Returns the result of applying `function` to `val` and the first item of `seq`, then applying `function` to that result and so on
+    * If `val` is not supplied it starts applying `function` to the first two items of `seq`
+* Can be used to update values in a map
+* Can be used to filter keys from a map
+
+### take, drop, take-while, and drop-while
+
+```clojure
+(take number seq) ; returns the first `number` elements in `seq`
+```
+
+```clojure
+(drop number seq) ; returns `seq` with the first `number` elements removed
+```
+
+```clojure
+(take-while pred seq) ; applies `pred` to the elements of `seq` and returns them until the first which `pred` returns false to
+```
+
+```clojure
+(drop-while pred seq) ; applies `pred` to the elements of `seq` and returns the elements after the first which `pred` returns false to
+```
+
+* `take-while` and `drop-while` can be used together to get an interval of a sequence that does not include the first and the last elements
+
+### filter and some
+
+```clojure
+
+```
+
+```clojure
+
+```
+
+### sort and sort-by
+
+```clojure
+
+```
+
+```clojure
+
+```
+
+### concat 
+
+```clojure
+
+```
