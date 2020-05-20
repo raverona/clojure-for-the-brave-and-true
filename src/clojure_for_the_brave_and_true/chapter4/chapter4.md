@@ -88,11 +88,13 @@ not in terms of specific data structures
 ### filter and some
 
 ```clojure
-
+(filter pred seq) ; returns all elements from `seq` that test true for a predicate `pred`
 ```
 
-```clojure
+* `filter` always processes all elements, therefore `take-while` and `drop-while` can be more efficient
 
+```clojure
+(some pred seq) ; test the elements of `seq` against `pred` and returns the first truthy value returned by `pred`
 ```
 
 ### sort and sort-by
