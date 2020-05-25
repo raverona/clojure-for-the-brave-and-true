@@ -7,7 +7,8 @@ not in terms of specific data structures
 
 ### Treating Lists, Vectors, Sets, and Maps as Sequences
 
-* Lists, Vectors, Sets and Maps implement the sequence abstraction
+* lists, vectors, sets and maps implement the sequence abstraction
+* The sequence abstraction is about operating on members individually
 
 #### first, rest and cons
 
@@ -100,15 +101,76 @@ not in terms of specific data structures
 ### sort and sort-by
 
 ```clojure
-
+(sort seq) ; sort elements in ascending order
 ```
 
 ```clojure
-
+(sort-by key-fn seq) ; sort elements based on the value returned by `key-fn` when applied to them
 ```
 
 ### concat 
 
 ```clojure
+(concat one-seq another-seq) ; append the elements of `another-seq` to the end of `one-seq`
+```
 
+## Lazy Seqs
+
+* A lazy seq is a seq whose members aren’t computed until you try to access them
+* `map` and `filter, for example, return a lazy seq`
+* Computing a seq’s members is called _realizing_ the seq
+* Makes programs more efficient and allow you to construct infinite sequences
+
+### Demonstrating Lazy Seq Efficiency
+
+* whenever Clojure has to realize an element, it preemptively realizes some of the next elements as well
+* lazy seq elements need to be realized only once
+
+### Infinite Sequences
+
+#### repeat
+
+```clojure
+(repeat element) ; creates an infinite sequence where every item is `element`
+```
+
+```clojure
+(repeatedly fn) ; creates an infinite sequence where each element is generated calling `fn`
+```
+
+## The Collection Abstraction
+
+* vectors, maps, lists, and sets also take part in the collection abstraction
+* the collection abstraction is about the data structure as a whole
+
+### into
+
+```clojure
+(into one-coll another-coll) ; adds the elements of `another-coll` into `one-coll`
+```
+
+### conj
+
+```clojure
+(conj coll & elements) ; adds each one of `elements` into `coll`
+```
+
+## Function Functions
+
+### apply
+
+```clojure
+(apply fn seq) ; explodes a `seq` so it can be passed to `fn`, a function that expects a rest parameter
+```
+
+### partial
+
+```clojure
+(partial fn & args) ; returns a function consisting of `fn` with `args` as its arguments 
+```
+
+### complement
+
+```clojure
+(complement fn) ; returns a function that returns the opposite of `fn`
 ```
