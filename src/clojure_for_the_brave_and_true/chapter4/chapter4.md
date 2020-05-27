@@ -174,3 +174,9 @@ not in terms of specific data structures
 ```clojure
 (complement fn) ; returns a function that returns the opposite of `fn`
 ```
+
+## A Vampire Data Analysis Program for the FWPD
+
+```clojure
+(slurp f & opts) ; opens a reader on `f` and reads all its contents
+```
