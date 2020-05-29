@@ -1,16 +1,34 @@
 (ns clojure-for-the-brave-and-true.chapter4.exercise2_test
   (:require [clojure.test :refer :all]
+            [clojure.java.io :as io]
             [clojure-for-the-brave-and-true.chapter4.exercise2 :as chapter4.exercise2]))
+
+(def filename "suspects.csv")
 
 (def file-content "Edward Cullen,10\nBella Swan,0\nCharlie Swan,0\nJacob Black,3\nCarlisle Cullen,6")
 
-(def new-suspects '({:name "Deacon Frost" :glitter-index 5}
-                    {:name "Nyssa Damaskinos" :glitter-index 3}
-                    {:name "Abraham Whistler" :glitter-index 1}))
+(defn- create-file
+  [filename file-content]
+  (spit filename file-content))
 
-(def file-content-with-new-suspects-appended "Edward Cullen,10\nBella Swan,0\nCharlie Swan,0\nJacob Black,3\nCarlisle Cullen,6\nDeacon Frost,5\nNyssa Damaskinos,3\nAbraham Whistler,1")
+(defn- delete-file
+  [filename]
+  (io/delete-file filename))
+
+(def new-suspect {:name "Deacon Frost" :glitter-index 5})
+
+(def file-content-with-new-suspect-appended "Edward Cullen,10\nBella Swan,0\nCharlie Swan,0\nJacob Black,3\nCarlisle Cullen,6\nDeacon Frost,5")
+
+(defn- test-set-up-and-tear-down
+  [f]
+  (create-file filename file-content)
+  (f)
+  (delete-file filename))
+
+(use-fixtures :once test-set-up-and-tear-down)
 
 (deftest test-append
   (testing "append should write to the end of suspects list"
-    (is (= file-content-with-new-suspects-appended
-           (chapter4.exercise2/append-suspects file-content new-suspects)))))
+    (chapter4.exercise2/append-suspects filename new-suspect)
+    (is (= file-content-with-new-suspect-appended
+           (slurp filename)))))
