@@ -1,20 +1,6 @@
 # clojure-for-the-brave-and-true
 
-A library with functions from the exercises from the book "[Clojure For The Brave And True](https://www.braveclojure.com)"
-
-## Installation
-
-FIXME: Download from http://example.com/FIXME.
-
-## Usage
-
-FIXME: explanation
-
-    $ java -jar clojure-for-the-brave-and-true-0.1.0-standalone.jar [args]
-
-## Examples
-
-FIXME: ...
+A library with functions and notes from the exercises from the book "[Clojure For The Brave And True](https://www.braveclojure.com)"
 
 ## Testing
 
