@@ -17,4 +17,12 @@
 
   (testing "associating multiple keys to a map with existing key/value pairs should create nested key/value pairs and keep the old ones"
     (is (= (assoc-in {:some-key "some-value"} [:other-key :another-key] "other-value")
-           (chapter5.exercise3/my-assoc-in {:some-key "some-value"} [:other-key :another-key] "other-value")))))
+           (chapter5.exercise3/my-assoc-in {:some-key "some-value"} [:other-key :another-key] "other-value"))))
+
+  (testing "associating multiple keys to a map with existing key/value pairs should create nested key/value pairs and keep the old ones"
+    (is (= (assoc-in {:some-key "some-value"} [:other-key :another-key] "other-value")
+           (chapter5.exercise3/my-assoc-in {:some-key "some-value"} [:other-key :another-key] "other-value"))))
+
+  (testing "associating multiple keys to a map, inside a vector, with existing key/value pairs should create nested key/value pairs inside the map in the vector and keep the old ones"
+    (is (= (assoc-in [{:some-key "some-value"}] [0 :other-key :another-key] "other-value")
+           (chapter5.exercise3/my-assoc-in [{:some-key "some-value"}] [0 :other-key :another-key] "other-value")))))

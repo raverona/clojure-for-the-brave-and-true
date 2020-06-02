@@ -4,4 +4,4 @@
   ([m [k & ks] v]
    (if (nil? ks)
      (assoc m k v)
-     (assoc m k (my-assoc-in {} ks v)))))
+     (assoc m k (my-assoc-in (get m k) ks v)))))
