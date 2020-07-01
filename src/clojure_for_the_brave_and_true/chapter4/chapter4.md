@@ -128,14 +128,16 @@ not in terms of specific data structures
 
 ### Infinite Sequences
 
-#### repeat
-
 ```clojure
 (repeat element) ; creates an infinite sequence where every item is `element`
 ```
 
 ```clojure
 (repeatedly fn) ; creates an infinite sequence where each element is generated calling `fn`
+```
+
+```clojure
+(lazy-seq body) ; creates a recipe for the next item
 ```
 
 ## The Collection Abstraction
