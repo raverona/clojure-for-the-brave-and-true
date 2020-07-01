@@ -1,4 +1,4 @@
-(ns clojure-for-the-brave-and-true.chapter5.exeercise1-test
+(ns clojure-for-the-brave-and-true.chapter5.exercise1-test
   (:require [clojure.test :refer :all]
             [clojure-for-the-brave-and-true.chapter5.exercise1 :as chapter5.exercise1]))
 
